@@ -1,12 +1,20 @@
 # services/groq_services.py
 import os
+import streamlit as st
 from langchain_groq import ChatGroq
 from langchain.schema.messages import SystemMessage, HumanMessage, AIMessage
 from loguru import logger
 from dotenv import load_dotenv
 
-load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+# load_dotenv()
+# GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+# Load the secrets
+config = st.secrets
+
+# Access the API key
+GROQ_API_KEY = config["groq"]["api_key"]
+
 
 
 def create_groq_client():
